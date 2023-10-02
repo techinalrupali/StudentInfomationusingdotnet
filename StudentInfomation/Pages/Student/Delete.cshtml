@@ -1,0 +1,28 @@
+﻿@page
+@model StudentInfomation.Pages.Student.DeleteModel
+@using System.Data.SqlClient;
+@{
+    try
+    {
+        string id = Request.Query["id"];
+
+        string connectionString = "Data Source=DESKTOP-KKEEJ3M\\SQLEXPRESS01;Initial Catalog=Test;Integrated Security=True";
+        using (SqlConnection con = new SqlConnection(connectionString))
+        {
+            con.Open();
+            string sql = "Delete from stud where id=@id";
+            using (SqlCommand com = new SqlCommand(sql, con))
+            {
+                com.Parameters.AddWithValue("@id", id);
+                com.ExecuteNonQuery();
+
+            }
+        }
+    }
+
+    catch(Exception ex)
+    {
+
+    }
+    Response.Redirect("/Student/Index");
+}

@@ -1,0 +1,45 @@
+﻿@page
+@model StudentInfomation.Pages.Student.IndexModel
+@{
+}
+<br />
+<h2>List Of Student</h2>
+<a class='btn btn-primary btn-sm' href='/Student/Create'>New Student</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Father Name</th>
+            <th>Mother Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Register Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.StI)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.Sname</td>
+                <td>@item.fathername</td>
+                <td>@item.mothername</td>
+                <td>@item.email</td>
+                <td>@item.age</td>
+                <td>@item.phone</td>
+                <td>@item.saddress</td>
+                <td>@item.Regisdate</td>
+
+                <td>
+                    <a class='btn btn-primary btn-sm' href='/Student/Edit?id=@item.id'>Edit</a>
+                    <a class='btn btn-danger btn-sm' href='/Student/Delete?id=@item.id'>Delete</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
